@@ -124,9 +124,9 @@ button {
 }
 
 .container__resultado {
-    width: 50%; /* Ocupa el ancho restante del contenedor */
-    height: 30%; /* Ocupa toda la altura del contenedor */
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo negro con opacidad */
+    width: 50%; 
+    height: 30%; 
+    background-color: rgba(0, 0, 0, 0.6); 
     border-left: 1px solid black; /* Borde negro del lado izquierdo */
     border-radius: 0 24px 24px 0; /* Bordes redondeados en las esquinas superiores y inferiores derechas */
     display: flex;
