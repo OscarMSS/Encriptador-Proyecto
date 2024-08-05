@@ -29,24 +29,22 @@ body::before {
 }
 
 .container {
-    width: 1200px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
     display: flex;
-    align-items: center;
+    align-items: stretch; /* Asegura que los hijos del contenedor se estiren a lo alto */
     justify-content: space-between;
     border-radius: 24px;
-    border: 1px none;
-    background-size: 100% 100%;
+    overflow: hidden; /* Evita que los hijos del contenedor desborden */
     position: relative;
-    margin-top: 20px;
 }
 
 
 .container__contenido {
     display: flex;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
+    align-items: stretch; /* Asegura que el contenido interno se estire a lo alto */
+    width: 100%;
+    height: 100%;
 }
 
 .container__informaciones {
@@ -124,14 +122,14 @@ button {
 }
 
 .container__resultado {
-    width: 50%; 
-    height: 30%; 
-    background-color: rgba(0, 0, 0, 0.6); 
-    border-left: 1px solid black; /* Borde negro del lado izquierdo */
-    border-radius: 0 24px 24px 0; /* Bordes redondeados en las esquinas superiores y inferiores derechas */
+    width: 50%; /* Ocupa el 50% derecho del contenedor */
+    height: 100%; /* Ocupa toda la altura */
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo negro con opacidad */
+    border-left: 2px solid black; /* Borde negro a la izquierda */
+    border-radius: 0 24px 24px 0; /* Bordes redondeados a la derecha */
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
     justify-content: center;
     padding: 2rem;
     box-sizing: border-box;
@@ -146,15 +144,54 @@ button {
 
 .resultado__texto {
     width: 100%;
-    height: calc(100% - 40px); 
-    background-color: rgba(255, 255, 255, 0.1); 
+    height: calc(100% - 40px); /* Calcula la altura restante */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco con opacidad */
     color: #ffffff;
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 1rem;
-    overflow-y: auto; 
+    overflow-y: auto; /* Permite scroll vertical */
     word-wrap: break-word;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.5;
+    resize: none; /* Deshabilita el redimensionamiento manual */
+    pointer-events: none; /* Deshabilita la edición */
+    cursor: text; /* Muestra cursor de texto */
+    user-select: text; /* Permite seleccionar el texto */
+}
+
+.resultado__textarea {
+    width: 100%;
+    height: 80%;  /* Adjusted to fit the copy button */
+    border-radius: 16px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 18px;
+    padding: 1rem;
+    resize: none;
+    overflow: auto;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 1rem;
+}
+
+#copiarBoton {
+    width: 50%;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px;
+    margin-top: 1rem;
+    
+    background-color: #1875E8;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center; /* Center the button horizontally */
+}
+
+#copiarBoton:hover {
+    background-color: #005bb5;
 }
