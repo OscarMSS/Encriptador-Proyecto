@@ -3,38 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@400;700&display=swap"
-    rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Encriptador</title>
+    <title>Encriptador de Textos</title>
 </head>
-
 <body>
-    <div class="container">
-        <div class="container__contenido">
-            <div class="container__informaciones">
-                <div class="container__texto">
-                    <h1>Encriptador de Texto</h1>
-                </div>
-                <input type="text" id="valorUsuario" class="container__input" placeholder="Ingrese su texto aquí">
-                <div class="chute container__botones">
-                    <button onclick="verificarIntento();" class="container__boton">Encriptar</button>
-                    <button onclick="reiniciarJuego();" class="container__boton" id="reiniciar" disabled>Desencriptar</button>
-                </div>
+    <header class="titulo">
+        <h1>Encriptador de Textos</h1>
+    </header>
+
+    <main class="encriptador">
+        <div class="ingresar-texto">
+            <textarea id="textoEntrada" class="texto-entrada" placeholder="Ingrese su texto aquí" aria-label="Campo de entrada de texto"></textarea>
+            <div class="botones">
+                <button onclick="encriptarTexto();" class="boton encriptar">Encriptar</button>
+                <button onclick="desencriptarTexto();" class="boton desencriptar" id="desencriptar" disabled>Desencriptar</button>
             </div>
-            
-          
-            <div class="container__resultado">
-              
-                <h2 class="resultado__titulo">Resultado de la Encriptación</h2>
-                <textarea id="resultadoTexto" class="resultado__texto" readonly>
-                    <button id="copiarBoton" class="container__boton">Copiar</button> 
-                </div>
-            </div>
+            <p class="nota">⚠️ Utilice letras minúsculas y sin acento.</p>
         </div>
-    </div>
+
+        
+        <div class="salida-texto">
+            <textarea id="textoSalida" class="texto-salida" placeholder="Ningún mensaje fue encontrado" aria-label="Campo de salida de texto" readonly></textarea>
+            <button onclick="copiarTexto();" class="boton copiar">Copiar</button>
+        </div>
+    </main>
 
     <script src="app.js"></script>
 </body>
