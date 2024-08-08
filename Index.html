@@ -7,25 +7,34 @@
     <title>Encriptador de Textos</title>
 </head>
 <body>
+    <!-- Título movido a la esquina superior izquierda -->
     <header class="titulo">
         <h1>Encriptador de Textos</h1>
     </header>
 
     <main class="encriptador">
+        <!-- Sección para ingresar texto -->
         <div class="ingresar-texto">
-            <textarea id="textoEntrada" class="texto-entrada" placeholder="Ingrese su texto aquí" aria-label="Campo de entrada de texto"></textarea>
+            <textarea id="textoEntrada" class="texto-entrada" placeholder="Ingrese el texto aquí" aria-label="Campo de entrada de texto"></textarea>
+            <p class="nota">⚠️ Solo letras minúsculas y sin acentos.</p>
             <div class="botones">
                 <button onclick="encriptarTexto();" class="boton encriptar">Encriptar</button>
                 <button onclick="desencriptarTexto();" class="boton desencriptar" id="desencriptar" disabled>Desencriptar</button>
             </div>
-            <p class="nota">⚠️ Utilice letras minúsculas y sin acento.</p>
         </div>
 
-        
         <div class="salida-texto">
-            <textarea id="textoSalida" class="texto-salida" placeholder="Ningún mensaje fue encontrado" aria-label="Campo de salida de texto" readonly></textarea>
-            <button onclick="copiarTexto();" class="boton copiar">Copiar</button>
+            <img src="asset/image.png" alt="Ilustración" class="ilustracion">
+            <div class="mensaje" id="mensajeSalida">
+                <p id="textoSalida"><strong>Ningún mensaje fue encontrado</strong></p>
+                <p class="texto-default">Ingresa el texto que desees encriptar o desencriptar.</p>
+            </div>
         </div>
+
+    <!-- Botón de copiar fuera de la caja de salida de texto -->
+    <div class="area-boton-copiar">
+        <button onclick="copiarTexto();" class="boton-copiar">Copiar Texto</button>
+    </div>
     </main>
 
     <script src="app.js"></script>
