@@ -215,3 +215,59 @@ body {
     display: none;
 }
 
+@media (max-width: 1024px) {
+    /* Ajustes para tablets en vista de columna */
+
+    body {
+        padding: 10px; /* Reducir el padding general */
+    }
+
+    .encriptador {
+        display: flex;
+        flex-direction: column; /* Disposición en columna */
+        align-items: center; /* Alinear todo al centro */
+        gap: 20px; /* Espacio entre los elementos */
+        padding: 20px 0; /* Padding superior e inferior */
+    }
+
+    .titulo {
+        font-size: 24px; /* Ajustar tamaño del título */
+        text-align: center; /* Centrar el texto del título */
+        margin-bottom: 20px; /* Espacio debajo del título */
+        position: static; /* Remover el posicionamiento absoluto */
+        top: auto;
+        left: auto;
+    }
+
+    .ingresar-texto {
+        width: 100%;
+        height: auto; /* Ajustar altura automáticamente */
+        padding: 0 20px; /* Ajustar padding lateral */
+    }
+
+    .botones {
+        width: 100%;
+        display: flex;
+        flex-direction: row; /* Mantener los botones en fila */
+        justify-content: space-around; /* Espacio entre los botones */
+        padding: 0 20px; /* Ajustar padding lateral */
+    }
+
+    .salida-texto {
+        width: 100%;
+        height: auto; /* Ajustar altura automáticamente */
+        padding: 20px; /* Ajustar padding */
+    }
+
+    .boton-copiar-container {
+        width: 100%;
+        display: flex;
+        justify-content: center; /* Centrar el botón */
+        padding: 0 20px; /* Ajustar padding lateral */
+    }
+
+    .boton-copiar {
+        max-width: 100%;
+        width: 100%; /* Asegurar que el botón ocupe todo el ancho */
+    }
+}
