@@ -3,40 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Encriptador de Textos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Título movido a la esquina superior izquierda -->
-    <header class="titulo">
-        <h1>Encriptador de Textos</h1>
-    </header>
+    <div class="container">
+        <!-- Sección de Título -->
+        <section class="title-section">
+            <h1>Encriptador de Textos</h1>
+        </section>
+        
+        <!-- Sección de Entrada de Texto -->
+        <section class="input-section">
+            <textarea placeholder="Ingrese el texto aquí"></textarea>
 
-    <main class="encriptador">
-        <!-- Sección para ingresar texto -->
-        <div class="ingresar-texto">
-            <textarea id="textoEntrada" class="texto-entrada" placeholder="Ingrese el texto aquí" aria-label="Campo de entrada de texto"></textarea>
-            <p class="nota">⚠️ Solo letras minúsculas y sin acentos.</p>
-            <div class="botones">
-                <button onclick="encriptarTexto();" class="boton encriptar">Encriptar</button>
-                <button onclick="desencriptarTexto();" class="boton desencriptar" id="desencriptar" disabled>Desencriptar</button>
+            <!-- Sección de Mensaje de Advertencia -->
+            <section class="warning-section">
+                <p class="warning">⚠️ Solo letras minúsculas y sin acentos.</p>
+            </section>
+
+            <!-- Sección de Botones de Encriptar y Desencriptar -->
+            <section class="buttons-section">
+                <button id="encrypt">Encriptar</button>
+                <button id="decrypt">Desencriptar</button>
+            </section>
+        </section>
+        
+        <!-- Sección de Salida de Texto -->
+        <section class="output-section">
+            <div class="output-content">
+                <img src="asset/image.png" alt="Ilustración">
+                <p class="output-text">Ningún mensaje fue encontrado</p>
             </div>
-        </div>
 
-        <div class="salida-texto">
-            <img src="asset/image.png" alt="Ilustración" class="ilustracion">
-            <div class="mensaje" id="mensajeSalida">
-                <p id="textoSalida"><strong>Ningún mensaje fue encontrado</strong></p>
-                <p class="texto-default">Ingresa el texto que desees encriptar o desencriptar.</p>
-            </div>
-        </div>
+               <!-- Sección del Botón de Copiar Texto -->
+         <section class="copy-section">
+            <button id="copy">Copiar Texto</button>
+        </section>
 
-    <!-- Botón de copiar fuera de la caja de salida de texto -->
-    <div class="area-boton-copiar">
-        <button onclick="copiarTexto();" class="boton-copiar">Copiar Texto</button>
+        </section>
+
+      
     </div>
-    </main>
-
     <script src="app.js"></script>
 </body>
 </html>
