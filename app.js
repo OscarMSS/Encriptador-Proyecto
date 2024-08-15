@@ -1,117 +1,45 @@
-// Función para mostrar los mensajes e imagen por defecto si no hay texto en la entrada
-function verificarEntradaVacia() {
-    const textoEntrada = document.querySelector('.input-section textarea').value;
-    const textoSalida = document.querySelector('.output-text');
-    const salidaImagen = document.querySelector('.output-content img');
-    const textoDefault = document.querySelector('.subtext');
-    const copiarBtn = document.getElementById('copy');
+document.getElementById('encrypt').addEventListener('click', function() {
+    processText('encriptar');
+});
 
-    if (textoEntrada.trim() === '') {
-        textoSalida.innerHTML = 'Ningún mensaje fue encontrado';
-        textoDefault.classList.remove('texto-oculto'); // Mostrar el texto por defecto
-        salidaImagen.style.display = 'block'; // Mostrar la imagen
-        copiarBtn.style.display = 'none'; // Ocultar el botón de copiar
-    } else {
-        textoDefault.classList.add('texto-oculto'); // Ocultar el texto por defecto si hay entrada
-        salidaImagen.style.display = 'none'; // Ocultar la imagen si hay entrada
-        copiarBtn.style.display = 'block'; // Mostrar el botón de copiar
-    }
-}
+document.getElementById('decrypt').addEventListener('click', function() {
+    processText('desencriptar');
+});
 
-// Encriptar el texto usando sustitución personalizada
-function encriptarTexto() {
-    const textoEntrada = document.querySelector('.input-section textarea').value;
-    const textoSalida = document.querySelector('.output-text');
-    const desencriptarBtn = document.getElementById('decrypt');
-    const salidaImagen = document.querySelector('.output-content img');
-    const textoDefault = document.querySelector('.subtext');
-    const copiarBtn = document.getElementById('copy');
-    const titulo = document.querySelector('.title-section');
-    const subtitulo = document.querySelector('.subtext');
+function processText(action) {
+    const inputText = document.getElementById('input-text').value;
+    const outputTextElement = document.getElementById('output-text');
+    const outputContent = document.querySelector('.output-content');
+    const copySection = document.querySelector('.copy-section');
+    const titleSection = document.querySelector('.title-section');
 
-    if (textoEntrada.trim() === '') {
-        textoSalida.innerHTML = 'Ningún mensaje fue encontrado';
-        textoDefault.classList.remove('texto-oculto'); // Mostrar el texto por defecto
-        salidaImagen.style.display = 'block'; // Mostrar la imagen si no hay texto
-        copiarBtn.style.display = 'none'; // Ocultar el botón de copiar
-        titulo.style.display = 'block'; // Mostrar el título
-        subtitulo.style.display = 'block'; // Mostrar el subtítulo
-        return;
+    // Aseguramos que el título siempre esté visible
+    titleSection.style.display = 'block';
+
+    let resultText;
+
+    if (action === 'encriptar') {
+        resultText = encriptar(inputText);
+    } else if (action === 'desencriptar') {
+        resultText = desencriptar(inputText);
     }
 
-    // Reemplazar las vocales por patrones
-    const textoEncriptado = textoEntrada
-        .replace(/a/g, 'ai').replace(/A/g, 'Ai')
-        .replace(/e/g, 'enter').replace(/E/g, 'Enter')
-        .replace(/i/g, 'imes').replace(/I/g, 'Imes')
-        .replace(/o/g, 'ober').replace(/O/g, 'Ober')
-        .replace(/u/g, 'ufat').replace(/U/g, 'Ufat');
+    // Mostrar el resultado en la sección de salida
+    outputTextElement.textContent = resultText;
 
-    textoSalida.innerHTML = `<strong>${textoEncriptado}</strong>`;
-    textoDefault.classList.add('texto-oculto'); // Ocultar el texto por defecto
-    desencriptarBtn.disabled = false;
-    salidaImagen.style.display = 'none'; // Ocultar la imagen al mostrar el texto
-    copiarBtn.style.display = 'block'; // Mostrar el botón de copiar
-    titulo.style.display = 'none'; // Ocultar el título
-    subtitulo.style.display = 'none'; // Ocultar el subtítulo
+    // Mostrar las secciones de contenido y copiar
+    outputContent.classList.add('show');
+    copySection.classList.add('show');
 }
 
-// Desencriptar el texto revertiendo la sustitución
-function desencriptarTexto() {
-    const textoEntrada = document.querySelector('.input-section textarea').value;
-    const textoSalida = document.querySelector('.output-text');
-    const salidaImagen = document.querySelector('.output-content img');
-    const textoDefault = document.querySelector('.subtext');
-    const copiarBtn = document.getElementById('copy');
-    const titulo = document.querySelector('.title-section');
-    const subtitulo = document.querySelector('.subtext');
-
-    if (textoEntrada.trim() === '') {
-        textoSalida.innerHTML = 'Ningún mensaje fue encontrado';
-        textoDefault.classList.remove('texto-oculto'); // Mostrar el texto por defecto
-        salidaImagen.style.display = 'block'; // Mostrar la imagen si no hay texto
-        copiarBtn.style.display = 'none'; // Ocultar el botón de copiar
-        titulo.style.display = 'block'; // Mostrar el título
-        subtitulo.style.display = 'block'; // Mostrar el subtítulo
-        return;
-    }
-
-    // Revertir los patrones a las vocales originales (asegurando el orden correcto)
-    const textoDesencriptado = textoEntrada
-        .replace(/ufat/g, 'u').replace(/Ufat/g, 'U')
-        .replace(/ober/g, 'o').replace(/Ober/g, 'O')
-        .replace(/imes/g, 'i').replace(/Imes/g, 'I')
-        .replace(/enter/g, 'e').replace(/Enter/g, 'E')
-        .replace(/ai/g, 'a').replace(/Ai/g, 'A');
-
-    textoSalida.innerHTML = `<strong>${textoDesencriptado}</strong>`;
-    textoDefault.classList.add('texto-oculto'); // Ocultar el texto por defecto
-    salidaImagen.style.display = 'none'; // Ocultar la imagen al mostrar el texto
-    copiarBtn.style.display = 'block'; // Mostrar el botón de copiar
-    titulo.style.display = 'none'; // Ocultar el título
-    subtitulo.style.display = 'none'; // Ocultar el subtítulo
+function encriptar(text) {
+    // Lógica de encriptación aquí
+    // Ejemplo simple:
+    return text.replace(/e/g, 'enter').replace(/i/g, 'imes').replace(/a/g, 'ai').replace(/o/g, 'ober').replace(/u/g, 'ufat');
 }
 
-// Copiar el texto al portapapeles
-function copiarTexto() {
-    const textoSalida = document.querySelector('.output-text').innerText;
-
-    if (textoSalida.trim() === '' || textoSalida.includes('Ningún mensaje')) {
-        alert('No hay texto para copiar.');
-        return;
-    }
-
-    navigator.clipboard.writeText(textoSalida).then(() => {
-        alert('Texto copiado al portapapeles.');
-    }).catch(err => {
-        console.error('Error al copiar el texto: ', err);
-    });
+function desencriptar(text) {
+    // Lógica de desencriptación aquí
+    // Ejemplo simple:
+    return text.replace(/enter/g, 'e').replace(/imes/g, 'i').replace(/ai/g, 'a').replace(/ober/g, 'o').replace(/ufat/g, 'u');
 }
-
-// Evento input para verificar si el campo de entrada está vacío
-document.querySelector('.input-section textarea').addEventListener('input', verificarEntradaVacia);
-
-// Añadir eventos a los botones
-document.getElementById('encrypt').addEventListener('click', encriptarTexto);
-document.getElementById('decrypt').addEventListener('click', desencriptarTexto);
-document.getElementById('copy').addEventListener('click', copiarTexto);

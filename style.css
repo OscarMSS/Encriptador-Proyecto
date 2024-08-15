@@ -118,10 +118,20 @@ body {
     justify-content: space-between; /* Distribuye el espacio entre los elementos */
 }
 
+.output-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 20px;
+  }
 
-
-.output-content {
-    margin-bottom: 20px; /* Espacio entre el contenido y el botón de copiar */
+  .output-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Asegura que el contenedor ocupe toda la altura disponible */
 }
 
 .output-content img {
@@ -136,14 +146,16 @@ body {
 }
 
 .output-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--color-terciario);
-    margin-bottom: 10px;
+    flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+    overflow-y: auto; /* Permite desplazarse si el texto es largo */
+    padding-bottom: 10px; /* Añade un pequeño espacio para el botón */
 }
 
 .copy-section {
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
+    align-items: center; /* Alinea el botón de copiar al centro */
 }
 
 #copy {
@@ -153,11 +165,31 @@ body {
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    display: block;
+    margin: 0 auto; /* Asegura que el botón esté centrado */
+}
+
+
+#copy-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #0a3871;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #copy:hover {
     background-color: var(--color-hover);
 }
+
+
+#output-text {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
 .title-section {
     width: 100%;
