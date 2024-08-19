@@ -1,23 +1,27 @@
-// Función para encriptar el texto
-function encryptText(text) {
-    // Aquí se aplica la lógica de encriptación: "hola" => "hoberlai"
-    let encrypted = text
-        .replace(/h/g, 'ho')
-        .replace(/o/g, 'ber')
-        .replace(/l/g, 'la')
-        .replace(/a/g, 'i');
-    return encrypted;
+// Función para encriptar el texto usando el Cifrado César
+function encryptText(text, shift = 3) {
+    return text.split('').map(char => {
+        const code = char.charCodeAt(0);
+        if (code >= 65 && code <= 90) { // Letras mayúsculas
+            return String.fromCharCode(((code - 65 + shift) % 26) + 65);
+        } else if (code >= 97 && code <= 122) { // Letras minúsculas
+            return String.fromCharCode(((code - 97 + shift) % 26) + 97);
+        }
+        return char; // No encriptar caracteres no alfabéticos
+    }).join('');
 }
 
-// Función para desencriptar el texto
-function decryptText(text) {
-    // Aquí se aplica la lógica de desencriptación: "hoberlai" => "hola"
-    let decrypted = text
-        .replace(/ho/g, 'h')
-        .replace(/ber/g, 'o')
-        .replace(/la/g, 'l')
-        .replace(/i/g, 'a');
-    return decrypted;
+// Función para desencriptar el texto usando el Cifrado César
+function decryptText(text, shift = 3) {
+    return text.split('').map(char => {
+        const code = char.charCodeAt(0);
+        if (code >= 65 && code <= 90) { // Letras mayúsculas
+            return String.fromCharCode(((code - 65 - shift + 26) % 26) + 65);
+        } else if (code >= 97 && code <= 122) { // Letras minúsculas
+            return String.fromCharCode(((code - 97 - shift + 26) % 26) + 97);
+        }
+        return char; // No desencriptar caracteres no alfabéticos
+    }).join('');
 }
 
 // Función para actualizar el área de salida
@@ -28,13 +32,11 @@ function updateOutput(text) {
     const copyButton = document.getElementById('copy');
 
     if (text.trim() === '') {
-        // Si el texto está vacío, mostrar la imagen y los mensajes por defecto
         outputContent.querySelector('img').style.display = 'block';
         outputText.textContent = 'Ningún mensaje fue encontrado';
         subtext.textContent = 'Ingresa el texto que desees encriptar o desencriptar';
         copyButton.style.display = 'none';
     } else {
-        // Mostrar el texto encriptado/desencriptado y el botón de copiar
         outputContent.querySelector('img').style.display = 'none';
         outputText.textContent = text;
         subtext.textContent = '';
@@ -58,8 +60,8 @@ document.getElementById('encrypt').addEventListener('click', function() {
 });
 
 document.getElementById('decrypt').addEventListener('click', function() {
-    const inputText = document.querySelector('textarea').value;
-    const decryptedText = decryptText(inputText);
+    const outputText = document.querySelector('.output-text').textContent;
+    const decryptedText = decryptText(outputText);
     updateOutput(decryptedText);
 });
 
